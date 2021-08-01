@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./style.css">
+    <title>eel課題</title>
+  </head>
+  <body>
+    <h3>課題3</h3>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" id="char_text" placeholder="Input Charactor's name" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="char_button">入力</button>
+        </div>
+    </div>
+    <textarea class="form-control  auto-resize" id="char_textarea" placeholder="未入力" readonly></textarea>
+    <!-- JavaScript -->
+    <script type="text/javascript" src="./eel.js"></script>
+    <script>
+        var btn = document.getElementById('char_button');
+
+        btn.addEventListener('click', () => {
+            const char_word = document.getElementById("char_text").value;
+            if(char_word != ""){
+                eel.kimetsu_search(char_word)
+                document.getElementById("char_text").value = ""
+            }else{
+                alert("No Word")
+            }
+        })
+
+        eel.expose(view_log_js)
+        function view_log_js(text){
+            document.getElementById("char_textarea").value += text + "\n"
+            document.getElementById("char_textarea").scrollTop = document.getElementById("char_textarea").scrollHeight
+        }
+    </script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
