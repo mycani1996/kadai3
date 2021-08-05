@@ -1,4 +1,4 @@
-#char_textarea{
-    height: calc(1.3em * 10);
+#charactor_textarea{
+    height: calc(1.3em * 15);
     line-height: 1.3;
 }

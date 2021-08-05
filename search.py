@@ -2,7 +2,7 @@ import pandas as pd
 import eel
 
 ### デスクトップアプリ作成課題
-def kimetsu_search(word):
+def charactor_search(word):
     print_txt:str
     # 検索対象取得
     df=pd.read_csv("./source.csv")
@@ -16,6 +16,7 @@ def kimetsu_search(word):
         source.append(word)
     
     # CSV書き込み
-    df=pd.DataFrame(source,columns=["name"])
+    df=pd.DataFrame(source)
+    df.columns = ["name"]
     df.to_csv("./source.csv",encoding="utf_8-sig")
     eel.view_log_js(print_txt)
