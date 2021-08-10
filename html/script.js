@@ -10,11 +10,11 @@ btn.addEventListener('click', () => {
     }
 })
 
-bsCustomFileInput.init();
+//sourceファイル変更処理
+var fileInput = document.getElementById('inputFile');
+fileInput.addEventListener('change', loadLocalCsv);
 // 制限サイズ
 const sizeLimit = 1024 * 1024 * 1;
-//参照ファイル変換
-const fileInput = document.getElementById('inputFile');
 // changeイベントで呼び出す関数
 function loadLocalCsv(e) {
   // ファイル情報を取得
@@ -51,32 +51,12 @@ function loadLocalCsv(e) {
   reader.readAsText(fileData);
 }
 
-// ファイル選択時にloadLocalCsvを発火
-fileInput.addEventListener('change', loadLocalCsv);
+// 表示領域を一番下に移動
+bsCustomFileInput.init();
 
+//キャラクター名を表示
 eel.expose(view_log_js)
 function view_log_js(text){
     document.getElementById("charactor_textarea").value += text + "\n"
     document.getElementById("charactor_textarea").scrollTop = document.getElementById("charactor_textarea").scrollHeight
-}
-
-function csv_data(dataPath) {
-  const request = new XMLHttpRequest(); // HTTPでファイルを読み込む
-  request.addEventListener('load', (event) => { // ロードさせ実行
-      const response = event.target.responseText; // 受け取ったテキストを返す
-      return csv_array(response); //csv_arrayの関数を実行
-  });
-  request.open('GET', dataPath, true); // csvのパスを指定
-  request.send();
-}
-
-function csv_array(data) {
-  const dataArray = []; //配列を用意
-  const dataString = data.split('\n'); //改行で分割
-  for (let i = 0; i < dataString.length; i++) { //あるだけループ
-      dataArray[i] = dataString[i].split(',');
-  }
-  output_csv.innerHTML = dataArray; //表示
-  // console.log(dataArray);
-  return dataArray;
 }

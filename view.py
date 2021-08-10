@@ -17,6 +17,7 @@ def change_source_file(data):
     df=pd.DataFrame(data)
     df.columns = ["name"]
     df.to_csv("./source.csv",encoding="utf_8-sig")
+    eel.view_log_js("sourceファイルを更新しました")
 
 desktop.start(app_name,end_point,size)
 #desktop.start(size=size,appName=app_name,endPoint=end_point)
